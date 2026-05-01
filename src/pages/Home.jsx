@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { products, categories, treatments, testimonials } from "../data";
-import ProductImage from "../components/ProductImage";
 
 export default function Home() {
   const featured = products.slice(0, 4);
@@ -9,46 +8,50 @@ export default function Home() {
   return (
     <div>
       {/* ===== HERO ===== */}
-      <section className="relative min-h-[90vh] flex items-center bg-gradient-to-br from-rose-50 via-white to-amber-50 overflow-hidden">
-        {/* Decorative circles */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-rose-200/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-amber-200/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-rose-100/10 to-transparent rounded-full blur-3xl" />
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <img
+            src="/img-unsplash-1.jpg"
+            alt="Skincare products"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
+        </div>
 
         <div className="max-w-6xl mx-auto px-4 py-20 relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left: Text */}
-            <div>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-rose-100/80 text-rose-600 text-xs font-semibold rounded-full mb-6 uppercase tracking-wider">
-                <span className="w-2 h-2 bg-rose-400 rounded-full animate-pulse" />
+            <div className="text-white">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/15 backdrop-blur-sm text-white text-xs font-semibold rounded-full mb-6 uppercase tracking-wider border border-white/20">
+                <span className="w-2 h-2 bg-rose-300 rounded-full animate-pulse" />
                 Premium Skincare
               </div>
-              <h1 className="text-5xl md:text-7xl font-bold text-stone-900 leading-tight mb-6">
+              <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
                 Your Skin Deserves
                 <br />
-                <span className="bg-gradient-to-r from-rose-400 to-rose-500 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-rose-200 to-amber-200 bg-clip-text text-transparent">
                   To Glō
                 </span>
               </h1>
-              <p className="text-stone-500 text-lg max-w-lg leading-relaxed mb-10">
+              <p className="text-stone-300 text-lg max-w-lg leading-relaxed mb-10">
                 Discover clean, effective skincare and transformative facial treatments
                 designed to reveal your natural radiance. No compromises. Just glow.
               </p>
               <div className="flex items-center gap-4">
                 <Link
                   to="/products"
-                  className="px-8 py-3 bg-rose-400 hover:bg-rose-500 text-white font-medium rounded-full transition-all hover:shadow-lg hover:shadow-rose-200"
+                  className="px-8 py-3 bg-rose-400 hover:bg-rose-500 text-white font-medium rounded-full transition-all hover:shadow-lg hover:shadow-rose-500/30"
                 >
                   Shop Now
                 </Link>
                 <Link
                   to="/facial"
-                  className="px-8 py-3 border-2 border-stone-300 hover:border-rose-300 text-stone-700 font-medium rounded-full transition-colors"
+                  className="px-8 py-3 border-2 border-white/40 hover:border-white/80 text-white font-medium rounded-full transition-colors backdrop-blur-sm"
                 >
                   Book a Facial
                 </Link>
               </div>
-              {/* Trust badges */}
               <div className="flex items-center gap-6 mt-10 text-stone-400 text-sm">
                 <span className="flex items-center gap-1.5">🌱 Clean Ingredients</span>
                 <span className="flex items-center gap-1.5">🐰 Cruelty-Free</span>
@@ -56,22 +59,20 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: Product display */}
-            <div className="hidden lg:flex items-center justify-center relative">
-              <div className="relative w-80 h-96">
-                {/* Floating product bottles */}
-                <div className="absolute top-4 left-8 w-32 animate-[float_6s_ease-in-out_infinite]">
-                  <ProductImage image="serum-bottle" />
+            {/* Right: Large product image */}
+            <div className="hidden lg:flex items-center justify-center">
+              <div className="relative w-80 h-96 rounded-2xl overflow-hidden shadow-2xl shadow-black/30">
+                <img
+                  src="/img-unsplash-3.jpg"
+                  alt="Face cream jar"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                {/* Floating badge */}
+                <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-sm rounded-xl p-3">
+                  <p className="text-stone-800 text-xs font-semibold">Vitamin C Brightening Cream</p>
+                  <p className="text-rose-500 text-sm font-bold mt-0.5">$42</p>
                 </div>
-                <div className="absolute bottom-8 right-4 w-36 animate-[float_8s_ease-in-out_infinite_reverse]">
-                  <ProductImage image="cream-jar" />
-                </div>
-                <div className="absolute top-20 right-8 w-28 animate-[float_7s_ease-in-out_infinite_1s]">
-                  <ProductImage image="oil-dropper" />
-                </div>
-                {/* Sparkles */}
-                <span className="absolute top-10 right-10 text-2xl animate-ping opacity-30">✦</span>
-                <span className="absolute bottom-20 left-0 text-lg animate-ping opacity-20" style={{ animationDelay: "2s" }}>✦</span>
               </div>
             </div>
           </div>
@@ -95,12 +96,18 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {featured.map((p) => (
-              <div key={p.id} className="group bg-stone-50 rounded-xl p-5 text-center hover:bg-rose-50 transition-all hover:-translate-y-1">
-                <div className="w-20 h-20 mx-auto mb-3">
-                  <ProductImage image={p.image} />
+              <div key={p.id} className="group bg-stone-50 rounded-xl overflow-hidden hover:bg-rose-50 transition-all hover:-translate-y-1">
+                <div className="aspect-square overflow-hidden">
+                  <img
+                    src={p.id === 1 ? "/img-unsplash-1.jpg" : p.id === 2 ? "/img-unsplash-3.jpg" : p.id === 9 ? "/img-unsplash-6.jpg" : "/img-unsplash-8.jpg"}
+                    alt={p.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
-                <h3 className="font-medium text-stone-800 text-sm">{p.name}</h3>
-                <p className="text-rose-500 font-bold text-sm mt-1">${p.price}</p>
+                <div className="p-4 text-center">
+                  <h3 className="font-medium text-stone-800 text-sm">{p.name}</h3>
+                  <p className="text-rose-500 font-bold text-sm mt-1">${p.price}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -130,41 +137,53 @@ export default function Home() {
       </section>
 
       {/* ===== TREATMENTS PREVIEW ===== */}
-      <section className="max-w-6xl mx-auto px-4 mt-24">
-        <div className="text-center mb-10">
-          <span className="text-rose-500 text-sm font-semibold uppercase tracking-wider">Treatments</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mt-1">Facial Treatments</h2>
-          <p className="text-stone-500 mt-2">Expert care tailored to your skin's needs</p>
+      <section className="relative mt-24 overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0">
+          <img
+            src="/img-unsplash-5.jpg"
+            alt="Facial treatment"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/60 to-black/75" />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {treatments.slice(0, 3).map((t) => (
-            <div
-              key={t.id}
-              className="group bg-white rounded-2xl border border-stone-200 p-6 hover:border-rose-200 hover:shadow-md transition-all"
-            >
-              <div className="flex items-start justify-between mb-3">
-                <h3 className="font-semibold text-stone-900 group-hover:text-rose-500 transition-colors">{t.name}</h3>
-                <span className="bg-rose-100 text-rose-600 text-xs font-bold px-3 py-1 rounded-full">${t.price}</span>
+
+        <div className="relative z-10 max-w-6xl mx-auto px-4 py-20">
+          <div className="text-center mb-10">
+            <span className="text-rose-300 text-sm font-semibold uppercase tracking-wider">Treatments</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mt-1">Facial Treatments</h2>
+            <p className="text-stone-300 mt-2">Expert care tailored to your skin's needs</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {treatments.slice(0, 3).map((t) => (
+              <div
+                key={t.id}
+                className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all hover:-translate-y-1"
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <h3 className="font-semibold text-white">{t.name}</h3>
+                  <span className="bg-rose-400/80 text-white text-xs font-bold px-3 py-1 rounded-full">${t.price}</span>
+                </div>
+                <span className="text-stone-400 text-xs">{t.duration}</span>
+                <p className="text-stone-300 text-sm mt-3 leading-relaxed">{t.description}</p>
+                <ul className="mt-4 space-y-1">
+                  {t.highlights.slice(0, 2).map((h, i) => (
+                    <li key={i} className="text-xs text-stone-400 flex items-center gap-1.5">
+                      <span className="w-1 h-1 bg-rose-300 rounded-full" /> {h}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <span className="text-stone-400 text-xs">{t.duration}</span>
-              <p className="text-stone-500 text-sm mt-3 leading-relaxed">{t.description}</p>
-              <ul className="mt-4 space-y-1">
-                {t.highlights.slice(0, 2).map((h, i) => (
-                  <li key={i} className="text-xs text-stone-400 flex items-center gap-1.5">
-                    <span className="w-1 h-1 bg-rose-300 rounded-full" /> {h}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <div className="text-center mt-8">
-          <Link
-            to="/facial"
-            className="inline-block px-6 py-3 border-2 border-stone-300 hover:border-rose-300 text-stone-700 font-medium rounded-full transition-colors"
-          >
-            View All Treatments &rarr;
-          </Link>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link
+              to="/facial"
+              className="inline-block px-6 py-3 border-2 border-white/40 hover:border-white/80 text-white font-medium rounded-full transition-colors backdrop-blur-sm"
+            >
+              View All Treatments &rarr;
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -194,24 +213,32 @@ export default function Home() {
 
       {/* ===== ABOUT TEASER ===== */}
       <section className="max-w-6xl mx-auto px-4 mt-24">
-        <div className="bg-gradient-to-r from-amber-50 via-rose-50 to-stone-50 rounded-3xl p-10 md:p-16 text-center border border-stone-100">
-          <div className="max-w-2xl mx-auto">
-            <span className="text-rose-500 text-sm font-semibold uppercase tracking-wider">Our Promise</span>
-            <h2 className="text-3xl font-bold text-stone-900 mt-1 mb-4">Clean Ingredients, Real Results</h2>
-            <p className="text-stone-600 leading-relaxed">
-              Every product is formulated without parabens, sulfates, or synthetic fragrances.
-              We believe skincare should be as good for your skin as it feels.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-stone-500">
-              <span className="flex items-center gap-2">
-                <span className="text-lg">🌱</span> Plant-Based
-              </span>
-              <span className="flex items-center gap-2">
-                <span className="text-lg">🧪</span> Dermatologist-Tested
-              </span>
-              <span className="flex items-center gap-2">
-                <span className="text-lg">🌍</span> Eco-Friendly
-              </span>
+        <div className="relative rounded-3xl overflow-hidden">
+          <img
+            src="/img-unsplash-8.jpg"
+            alt="Skincare routine"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-rose-900/80 via-rose-800/60 to-amber-800/70" />
+          <div className="relative z-10 p-10 md:p-16 text-center">
+            <div className="max-w-2xl mx-auto text-white">
+              <span className="text-rose-200 text-sm font-semibold uppercase tracking-wider">Our Promise</span>
+              <h2 className="text-3xl font-bold mt-1 mb-4">Clean Ingredients, Real Results</h2>
+              <p className="text-stone-200 leading-relaxed">
+                Every product is formulated without parabens, sulfates, or synthetic fragrances.
+                We believe skincare should be as good for your skin as it feels.
+              </p>
+              <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-stone-200">
+                <span className="flex items-center gap-2">
+                  <span className="text-lg">🌱</span> Plant-Based
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="text-lg">🧪</span> Dermatologist-Tested
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="text-lg">🌍</span> Eco-Friendly
+                </span>
+              </div>
             </div>
           </div>
         </div>
